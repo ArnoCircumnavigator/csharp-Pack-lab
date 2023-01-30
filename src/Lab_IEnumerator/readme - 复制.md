@@ -1,2 +1,0 @@
-﻿- 实现System.Collections.Generic.IEnumerable
-- 开发一个可以迭代的对象MyCollection，以及它的迭代器对象MyCollectionDataEnumerator
