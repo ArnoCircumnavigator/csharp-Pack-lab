@@ -7,10 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Update="readme - 复制.md">
-      <SubType>Component</SubType>
-    </None>
-  </ItemGroup>
-
 </Project>
