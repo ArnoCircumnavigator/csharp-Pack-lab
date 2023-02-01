@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab_IEnumerator", "Lab_IEnumerator\Lab_IEnumerator.csproj", "{39036B02-E647-4D5E-8E9E-E75E361C91C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_IEnumerator_UnityCoroutine", "Lab_IEnumerator_UnityCoroutine\Lab_IEnumerator_UnityCoroutine.csproj", "{5C663598-EDCC-461F-90A4-A460BD9B6CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab_IEnumerator_UnityCoroutine", "Lab_IEnumerator_UnityCoroutine\Lab_IEnumerator_UnityCoroutine.csproj", "{5C663598-EDCC-461F-90A4-A460BD9B6CE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
