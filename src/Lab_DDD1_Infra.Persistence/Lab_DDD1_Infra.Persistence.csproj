@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DDD-learn1-Book\Lab_DDD1_Domain\Lab_DDD1_Domain.csproj" />
+    <ProjectReference Include="..\Lab_DDD1_Infra.PersistenceModel\Lab_DDD1_Infra.PersistenceModel.csproj" />
+  </ItemGroup>
+
+</Project>

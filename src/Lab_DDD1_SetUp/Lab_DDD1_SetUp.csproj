@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
+    <PackageReference Include="Prism.Unity.Extensions" Version="8.0.62" />
+    <PackageReference Include="Unity.Microsoft.DependencyInjection" Version="5.11.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DDD-learn1-Book\Lab_DDD1_Domain\Lab_DDD1_Domain.csproj" />
+    <ProjectReference Include="..\Lab_DDD1_Infra.PersistenceModel\Lab_DDD1_Infra.PersistenceModel.csproj" />
+    <ProjectReference Include="..\Lab_DDD1_Infra.Persistence\Lab_DDD1_Infra.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
