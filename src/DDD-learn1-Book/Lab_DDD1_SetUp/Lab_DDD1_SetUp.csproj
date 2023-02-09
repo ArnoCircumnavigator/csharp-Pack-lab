@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DDD-learn1-Book\Lab_DDD1_Domain\Lab_DDD1_Domain.csproj" />
+    <ProjectReference Include="..\Lab_DDD1_Domain\Lab_DDD1_Domain.csproj" />
+    <ProjectReference Include="..\Lab_DDD1_Infra.Persistence\Lab_DDD1_Infra.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,7 @@ using Lab_DDD1_Domain.Repositories;
 using Lab_DDD1_Domain.Services;
 using Lab_DDD1_Infra.Persistence;
 using Lab_DDD1_Infra.PersistenceModel;
+using System.IO.Pipes;
 using Unity;
 using Unity.Lifetime;
 

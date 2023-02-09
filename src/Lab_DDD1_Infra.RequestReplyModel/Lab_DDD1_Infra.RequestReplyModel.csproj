@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Lab_DDD1_Domain.Ioc\Lab_DDD1_Domain.Ioc.csproj" />
-    <ProjectReference Include="..\Lab_DDD1_Infra.PersistenceModel\Lab_DDD1_Infra.PersistenceModel.csproj" />
-  </ItemGroup>
-
 </Project>

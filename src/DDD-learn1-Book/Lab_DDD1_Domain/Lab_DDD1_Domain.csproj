@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Lab_DDD1_Domain.Ioc\Lab_DDD1_Domain.Ioc.csproj" />
     <ProjectReference Include="..\Lab_DDD1_Domain.CoreFramework\Lab_DDD1_Domain.CoreFramework.csproj" />
+    <ProjectReference Include="..\Lab_DDD1_Domain.Ioc\Lab_DDD1_Domain.Ioc.csproj" />
   </ItemGroup>
 
   <ItemGroup>
