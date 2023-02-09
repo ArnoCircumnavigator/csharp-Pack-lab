@@ -59,26 +59,26 @@ namespace Lab_DDD1_Domain.CoreFramework
                 }
             }
         }
-        public Type? GetActorRoleType(Type actorType,Type roleTypeDefinition)
+        public Type? GetActorRoleType(Type actorType, Type roleTypeDefinition)
         {
             return mappings.Where(item => item.Key.ActorType == actorType && item.Key.RoleTypeDefinition == roleTypeDefinition).Select(item => item.Value).SingleOrDefault();
         }
 
         public void ResolveDomainEvents(Assembly assembly)
         {
-            foreach (Type? subscriberType in assembly.GetTypes().Where(type => type.IsClass && type.GetCustomAttributes(typeof(CompilerGeneratedAttribute),true).Count() == 0))
+            foreach (Type? subscriberType in assembly.GetTypes().Where(type => type.IsClass && type.GetCustomAttributes(typeof(CompilerGeneratedAttribute), true).Count() == 0))
             {
-                var eventHandlers = subscriberType.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public).Where(IsEventHandle);
+                IEnumerable<MethodInfo> eventHandlers = subscriberType.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public).Where(IsEventHandle);
                 subscriberEventHandlers.Add(subscriberType, eventHandlers);
                 foreach (var eventHandler in eventHandlers)
                 {
-                    var eventType = eventHandler.GetParameters()[0].ParameterType;
+                    Type eventType = eventHandler.GetParameters()[0].ParameterType;
                     if (!eventSubscriberTypeMappings.TryGetValue(eventType, out List<Type>? subscriberTypes))
                     {
                         subscriberTypes = new List<Type>();
                         eventSubscriberTypeMappings.Add(eventType, subscriberTypes);
                     }
-                    if(!subscriberTypes.Exists(existingSubscriberType => existingSubscriberType == subscriberType))
+                    if (!subscriberTypes.Exists(existingSubscriberType => existingSubscriberType == subscriberType))
                     {
                         subscriberTypes.Add(subscriberType);
                     }
@@ -94,7 +94,7 @@ namespace Lab_DDD1_Domain.CoreFramework
             {
                 foreach (Type? subscriberType in subscriberTyps)
                 {
-                    if(!mergedSubscriberTyps.Exists(mst=>mst == subscriberType))
+                    if (!mergedSubscriberTyps.Exists(mst => mst == subscriberType))
                     {
                         mergedSubscriberTyps.Add(subscriberType);
                     }
@@ -153,19 +153,14 @@ namespace Lab_DDD1_Domain.CoreFramework
 
         private Type GetActorType(Type roleImplementationType)
         {
+            if (roleImplementationType == null || roleImplementationType == typeof(object) || roleImplementationType.BaseType == null)
+                return roleImplementationType;
+
             Type baseType = roleImplementationType.BaseType;
-
-            while (baseType != typeof(object) && !(baseType.IsGenericType && (baseType.GetGenericTypeDefinition() == typeof(Role<,>))))
-            {
-                baseType = baseType.BaseType;
-            }
-
-            if (baseType.IsGenericType && (baseType.GetGenericTypeDefinition() == typeof(Role<,>)))
-            {
+            if (baseType.IsGenericType && baseType.GetGenericTypeDefinition() == typeof(Role<,>))
                 return baseType.GetGenericArguments()[0];
-            }
 
-            return roleImplementationType;
+            return GetActorType(baseType);
         }
 
         private static bool IsEventHandle(MethodInfo methodInfo)

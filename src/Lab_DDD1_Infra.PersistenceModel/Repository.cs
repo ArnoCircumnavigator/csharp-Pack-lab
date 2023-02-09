@@ -15,7 +15,7 @@ namespace Lab_DDD1_Infra.PersistenceModel
     {
         #region Private Variables
 
-        private List<TrackingObject> trackingObjectList = new List<TrackingObject>();
+        private readonly List<TrackingObject> trackingObjectList = new();
 
         #endregion
 
@@ -24,10 +24,7 @@ namespace Lab_DDD1_Infra.PersistenceModel
         public Repository()
         {
             var unitOfWork = DependencyResolver.Resolve<IUnitOfWork>();
-            if (unitOfWork != null)
-            {
-                unitOfWork.RegisterRepository(this);
-            }
+            unitOfWork?.RegisterRepository(this);
         }
 
         #endregion
@@ -65,18 +62,7 @@ namespace Lab_DDD1_Infra.PersistenceModel
         }
         public virtual void Add(TAggregateRoot aggregateRoot)
         {
-            //if ((from trackingObj in trackingObjectList where (trackingObj.Status == AggregateRootStatus.New || trackingObj.Status == AggregateRootStatus.Tracking) && Equals(trackingObj.Id, aggregateRoot.Id) select trackingObj).FirstOrDefault() != null)
-            //{
-            //    throw new InvalidOperationException("The aggregateRoot already exists.");
-            //}
-            var exist = false;
-            foreach (TrackingObject obj in trackingObjectList)
-            {
-                if (obj.Status == (AggregateRootStatus.New | AggregateRootStatus.Tracking))
-                    if (Equals(obj.Id, aggregateRoot.Id))
-                        exist = true;
-            }
-            if (exist)
+            if ((from trackingObj in trackingObjectList where (trackingObj.Status == AggregateRootStatus.New || trackingObj.Status == AggregateRootStatus.Tracking) && Equals(trackingObj.Id, aggregateRoot.Id) select trackingObj).FirstOrDefault() != null)
             {
                 throw new InvalidOperationException("The aggregateRoot already exists.");
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_DDD1_Infra.RequestReplyModel
 {
-    public class PagedList<TData>:List<TData>,IPagedList<TData>
+    public class PagedList<TData> : List<TData>, IPagedList<TData>
     {
         public PagedList(IEnumerable<TData> pageData, int totalCount, int pageIndex, int pageSize)
         {

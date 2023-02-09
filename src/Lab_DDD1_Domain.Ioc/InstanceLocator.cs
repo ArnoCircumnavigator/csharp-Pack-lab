@@ -9,7 +9,7 @@ namespace Lab_DDD1_Domain.Ioc
 {
     public sealed class InstanceLocator : IInstanceLocator
     {
-        private static IInstanceLocator? currentLocator;
+        private static IInstanceLocator currentLocator;
         private InstanceLocator()
         {
 

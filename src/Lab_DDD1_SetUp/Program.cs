@@ -78,8 +78,10 @@ namespace Lab_DDD1_SetUp
 
             //创建并启动图书入库场景
             PrintDescriptionBeforeStoreBookContext(book1, book2);
-            new StoreBookContext(libraryService, book1).Interaction(2, "4F-S-0001");
-            new StoreBookContext(libraryService, book2).Interaction(3, "4F-N-0002");
+            new StoreBookContext(libraryService, book1)
+                .Interaction(2, "4F-S-0001");
+            new StoreBookContext(libraryService, book2)
+                .Interaction(3, "4F-N-0002");
             PrintBookCount(book1, book2);
 
             //创建并启动借书场景

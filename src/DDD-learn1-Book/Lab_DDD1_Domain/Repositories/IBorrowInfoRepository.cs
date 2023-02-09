@@ -8,6 +8,6 @@ namespace Lab_DDD1_Domain.Repositories
         IRemoveableRepository<BorrowInfo, UniqueId>
     {
         bool FindNotReturnedBorrowInfos(UniqueId borrowerId, out IList<BorrowInfo> borrowInfos);
-        bool FindNotReturnedBorrowInfo(UniqueId borrowerId, UniqueId bookId, out BorrowInfo borrowInfo);
+        bool FindNotReturnedBorrowInfo(UniqueId borrowerId, UniqueId bookId, out BorrowInfo? borrowInfo);
     }
 }

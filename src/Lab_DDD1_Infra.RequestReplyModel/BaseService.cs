@@ -10,7 +10,7 @@ namespace Lab_DDD1_Infra.RequestReplyModel
         {
             return ProcessRequest<BaseReply>(requestHandler);
         }
-        protected static TReply ProcessRequest<TReply>(Action requestHandler) 
+        protected TReply ProcessRequest<TReply>(Action requestHandler)
             where TReply : BaseReply, new()
         {
             var reply = new TReply();
@@ -29,9 +29,9 @@ namespace Lab_DDD1_Infra.RequestReplyModel
             catch (Exception ex)
             {
                 reply.Success = false;
-                if (ex.InnerException != null && ex.InnerException is DomainException)
+                if (ex.InnerException != null && ex.InnerException is DomainException domainException)
                 {
-                    reply.ErrorState.ErrorItems = ((DomainException)ex.InnerException).ValidationError.GetErrors().ToErrorItemList();
+                    reply.ErrorState.ErrorItems = domainException.ValidationError.GetErrors().ToErrorItemList();
                 }
                 else
                 {

@@ -6,6 +6,7 @@ using Lab_DDD1_Domain.Roles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,6 +38,8 @@ namespace Lab_DDD1_Domain.Services
         public void ReceiveReturnedBook(Book book, IBorrower borrower)
         {
             borrowInfoRepository.FindNotReturnedBorrowInfo(borrower.Id, book.Id, out var borrowInfo);
+            if (borrowInfo == null)
+                throw new Exception("The borrowInfo can't find in repository");
             borrowInfo.ReturnTime = DateTime.Now;
 
             //这里，真正的系统还会计算归还时间是否超期，计算罚款之类的逻辑，因为我这个是一个演示的例子，所以不做这个处理了
@@ -49,8 +52,10 @@ namespace Lab_DDD1_Domain.Services
 
         public void StoreBook(Book book, int count, string location)
         {
-            var bookStoreInfo = new BookStoreInfo(book, count);
-            bookStoreInfo.Location = location;
+            var bookStoreInfo = new BookStoreInfo(book, count)
+            {
+                Location = location
+            };
             bookStoreInfoRepository.Add(bookStoreInfo);
         }
     }
